@@ -2,6 +2,7 @@
 let fetchInput = document.getElementById('inputFetch');
 fetchInput.addEventListener('keyup', function (e){
     e.preventDefault();
+
     console.log(e.keyCode)
     if (e.keyCode == 13){
         // fetchInput.value;
@@ -18,49 +19,50 @@ function write(id){
     let fetchShow = document.getElementById('fetchShow');
     let html = '';
 
+
+
     fetch('https://jsonplaceholder.typicode.com/todos/'+id)
         .then(response => response.json())
-
         .then(json => {
-            html = `<div class="userId">
-                        <p><b>User ID:</b> ${json.userId}</p>    
-                    </div>
-                     <div class="id">
-                            <p><b>ID:</b> ${json.id}</p>    
-                     </div>
-                      <div class="title">
-                            <p><b>Tittle:</b> ${json.title}</p>    
-                     </div>
-                     <div class="completed">
-                            <p><b>Competed:</b> ${json.completed}</p>    
-                     </div>
-                        `
-            fetchShow.innerHTML = html;
+            html = `
+            <tr>
+                <td>
+                    <input type="text" value="${json.userId}">
+                 </td>
+                <td>
+                    <input type="text" value="${json.id}">
+                 </td>
+                <td>
+                    <input type="text" value="${json.title}">
+                </td>
+                <td>
+                    <input type="text" value="${json.completed}">
+                </td>
+                <td>
+                    <button class="btn btn-primary" type="button" id="saveData">Save</button>
+                </td>
+                <td>
+                    <button salman="${json.id}" onclick="deleteBtn(this)" class="btn btn-danger deleteData" type="button" >Delete</button>
+                </td>
+            </tr> `
+
+            fetchShow.innerHTML += html;
         })
 }
+const formInput = document.querySelector('formInput');
 
-// 2nd input
+function deleteBtn(e){
+    console.log(e.parentElement)
+    const deleteData = e.getAttribute('salman');
+    const url = 'https://jsonplaceholder.typicode.com/posts/'+deleteData;
 
-let fetchInput2 = document.getElementById('inputFetch2');
-fetchInput2.addEventListener('keyup', function (e){
-    e.preventDefault();
-    console.log(e);
+    fetch(url,{
+        method: "DELETE",
+    }).then(response =>{
+        console.log(response)
+        e.parentElement.parentElement.remove();
+    })
 
-    if (e.keyCode == 13){
-        fetchInput2.value = '';
-    }
 
-});
-
-function write2(id2){
-    let fetchShow2 = document.getElementById('fetchShow2');
-    let html2 = '';
-
-    fetch('https://jsonplaceholder.typicode.com/todos/'+id2)
-        .then(response => response.json())
-        .then(json => console.log(json))
 }
 
-fetch('https://jsonplaceholder.typicode.com/todos/1')
-    .then(response => response.json())
-    .then(json => console.log(json))

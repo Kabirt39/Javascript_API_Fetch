@@ -15,6 +15,7 @@
 
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
           integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css">
     <link rel="stylesheet" href="css/main.css">
 
 
@@ -23,14 +24,23 @@
 <body>
     <div class="container"><br><br>
         <div class="formInput">
-            <input type="text" id="inputFetch">
-            <div id="fetchShow">
+            <input type="text" id="inputFetch" style="margin-bottom: 20px">
 
-            </div>
-        </div>
-        <br><br><br>
-        <div class="formInput2">
-            <input type="text" id="inputFetch2">
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th scope="col">User ID</th>
+                        <th scope="col">ID</th>
+                        <th scope="col">Tittle</th>
+                        <th scope="col">Competed</th>
+                        <th scope="col">Save Data</th>
+                        <th scope="col">Delete Data</th>
+                    </tr>
+                </thead>
+                <tbody id="fetchShow">
+
+                </tbody>
+            </table>
         </div>
     </div>
 
@@ -49,6 +59,7 @@
 
 <script src="js/vendor/modernizr-3.11.2.min.js"></script>
 <script src="js/plugins.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
     <script src="js/main.js"></script>
 
 </body>
